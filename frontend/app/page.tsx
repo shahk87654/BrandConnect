@@ -1,52 +1,129 @@
+'use client';
+
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
+
+// Dynamically import ParticlesBackground to avoid SSR issues
+const ParticlesBackground = dynamic(() => import('../components/ParticlesBackground'), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-dark to-dark-lighter">
+    <main className="min-h-screen bg-gradient-to-b from-dark to-dark-lighter relative overflow-hidden">
+      <ParticlesBackground />
+
+      {/* Floating Orbs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.div
+          className="absolute top-20 left-10 w-32 h-32 bg-primary/20 rounded-full blur-xl animate-float"
+          animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute top-40 right-20 w-24 h-24 bg-secondary/20 rounded-full blur-xl animate-morph"
+          animate={{ x: [0, -25, 0], y: [0, 15, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
+        <motion.div
+          className="absolute bottom-40 left-1/4 w-40 h-40 bg-accent/15 rounded-full blur-2xl animate-hologram"
+          animate={{ x: [0, 20, 0], y: [0, -30, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
+      </div>
+
       {/* Hero Section */}
       <section className="relative overflow-hidden px-4 py-32 sm:px-6 lg:px-8">
-        <div className="absolute inset-0 z-0 bg-gradient-to-r from-primary/10 to-secondary/10 blur-3xl" />
-        
-        <div className="relative z-10 max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-            Connect with Authentic Influencers
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-text-secondary mb-12 max-w-3xl mx-auto">
-            BrandConnect is the platform where brands meet influencers. Scale your campaigns with verified creators and transparent payments.
-          </p>
+        <div className="absolute inset-0 z-0 bg-gradient-to-r from-primary/10 to-secondary/10 blur-3xl animate-pulse-glow" />
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-            <Link
-              href="/signup?role=brand"
-              className="px-8 py-4 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-glow transition-all transform hover:scale-105"
+        <motion.div
+          className="relative z-10 max-w-7xl mx-auto text-center"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.h1
+            className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Connect with Authentic Influencers
+          </motion.h1>
+
+          <motion.p
+            className="text-xl md:text-2xl text-text-secondary mb-12 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            BrandConnect is the platform where brands meet influencers. Scale your campaigns with verified creators and transparent payments.
+          </motion.p>
+
+          <motion.div
+            className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Get Started as Brand
-            </Link>
-            <Link
-              href="/signup?role=influencer"
-              className="px-8 py-4 rounded-lg border-2 border-secondary text-secondary font-semibold hover:bg-secondary/10 transition-all"
+              <Link
+                href="/signup?role=brand"
+                className="px-8 py-4 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:shadow-glow transition-all transform hover:scale-105 animate-wave"
+              >
+                Get Started as Brand
+              </Link>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Join as Influencer
-            </Link>
-          </div>
+              <Link
+                href="/signup?role=influencer"
+                className="px-8 py-4 rounded-lg border-2 border-secondary text-secondary font-semibold hover:bg-secondary/10 transition-all animate-wave"
+              >
+                Join as Influencer
+              </Link>
+            </motion.div>
+          </motion.div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 mb-16 max-w-2xl mx-auto">
-            <div className="glass-card p-6">
+          <motion.div
+            className="grid grid-cols-3 gap-8 mb-16 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            <motion.div
+              className="glass-card p-6 animate-float"
+              whileHover={{ scale: 1.05, rotateY: 5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
               <div className="text-3xl font-bold text-primary mb-2">5,000+</div>
               <div className="text-text-secondary">Verified Influencers</div>
-            </div>
-            <div className="glass-card p-6">
+            </motion.div>
+            <motion.div
+              className="glass-card p-6 animate-float"
+              whileHover={{ scale: 1.05, rotateY: -5 }}
+              transition={{ type: "spring", stiffness: 300, delay: 0.1 }}
+            >
               <div className="text-3xl font-bold text-secondary mb-2">500+</div>
               <div className="text-text-secondary">Active Brands</div>
-            </div>
-            <div className="glass-card p-6">
+            </motion.div>
+            <motion.div
+              className="glass-card p-6 animate-float"
+              whileHover={{ scale: 1.05, rotateY: 5 }}
+              transition={{ type: "spring", stiffness: 300, delay: 0.2 }}
+            >
               <div className="text-3xl font-bold text-accent mb-2">$2M+</div>
               <div className="text-text-secondary">Paid Out</div>
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Features Section */}

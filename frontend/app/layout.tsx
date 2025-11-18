@@ -53,30 +53,31 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <div>
                   <h3 className="font-semibold mb-4">Product</h3>
                   <ul className="space-y-2 text-sm text-text-secondary">
-                    <li><Link href="#" className="hover:text-primary transition-colors">Features</Link></li>
-                    <li><Link href="#" className="hover:text-primary transition-colors">Pricing</Link></li>
-                    <li><Link href="#" className="hover:text-primary transition-colors">Security</Link></li>
+                    <li><Link href="/features" className="hover:text-primary transition-colors">Features</Link></li>
+                    <li><Link href="/pricing" className="hover:text-primary transition-colors">Pricing</Link></li>
+                    <li><Link href="/security" className="hover:text-primary transition-colors">Security</Link></li>
                   </ul>
                 </div>
                 <div>
                   <h3 className="font-semibold mb-4">Company</h3>
                   <ul className="space-y-2 text-sm text-text-secondary">
-                    <li><Link href="#" className="hover:text-primary transition-colors">About</Link></li>
-                    <li><Link href="#" className="hover:text-primary transition-colors">Blog</Link></li>
-                    <li><Link href="#" className="hover:text-primary transition-colors">Careers</Link></li>
+                    <li><Link href="/about" className="hover:text-primary transition-colors">About</Link></li>
+                    <li><Link href="/blog" className="hover:text-primary transition-colors">Blog</Link></li>
+                    <li><Link href="/careers" className="hover:text-primary transition-colors">Careers</Link></li>
                   </ul>
                 </div>
                 <div>
                   <h3 className="font-semibold mb-4">Legal</h3>
                   <ul className="space-y-2 text-sm text-text-secondary">
-                    <li><Link href="#" className="hover:text-primary transition-colors">Privacy</Link></li>
-                    <li><Link href="#" className="hover:text-primary transition-colors">Terms</Link></li>
+                    <li><Link href="/privacy" className="hover:text-primary transition-colors">Privacy</Link></li>
+                    <li><Link href="/terms" className="hover:text-primary transition-colors">Terms</Link></li>
                     <li><Link href="#" className="hover:text-primary transition-colors">Cookies</Link></li>
                   </ul>
                 </div>
                 <div>
                   <h3 className="font-semibold mb-4">Contact</h3>
                   <ul className="space-y-2 text-sm text-text-secondary">
+                    <li><Link href="/contact" className="hover:text-primary transition-colors">Contact Us</Link></li>
                     <li><a href="mailto:support@brandconnect.local" className="hover:text-primary transition-colors">support@brandconnect.local</a></li>
                     <li><a href="tel:+441234567890" className="hover:text-primary transition-colors">+44 123 456 7890</a></li>
                   </ul>
